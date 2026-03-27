@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
-from feature.chat.domain.entity.message import UsuarioContexto
-from feature.generateActivity.domain.entity.activity import ActividadSugerida, GeneradorParametros
+from src.feature.chat.domain.entity.Message import UsuarioContexto
+from src.feature.generateActivity.domain.entity.Activity import ActividadSugerida, GeneradorParametros
+
 
 class IA_ServiceInterface(ABC):
     @abstractmethod

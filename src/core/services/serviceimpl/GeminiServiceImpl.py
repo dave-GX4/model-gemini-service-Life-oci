@@ -1,9 +1,8 @@
 import json
-
-from core.services.interface.IA_ServiceInterface import IA_ServiceInterface
-from feature.chat.domain.entity.message import UsuarioContexto
-from feature.generateActivity.domain.entity.activity import ActividadSugerida, GeneradorParametros
-
+import google.generativeai as genai
+from src.core.services.interface.IA_ServiceInterface import IA_ServiceInterface
+from src.feature.chat.domain.entity.Message import UsuarioContexto
+from src.feature.generateActivity.domain.entity.Activity import ActividadSugerida, GeneradorParametros
 
 class GeminiServiceImpl(IA_ServiceInterface):
     def __init__(self, api_key: str):
@@ -19,11 +18,13 @@ class GeminiServiceImpl(IA_ServiceInterface):
         return response.text
 
     async def generar_actividad_dopamina(self, params: GeneradorParametros) -> ActividadSugerida:
-        prompt = f"""Actúa como experto en neurociencia... 
-        Datos: {params.estado_animo}, {params.intereses}... 
-        Responde ÚNICAMENTE en JSON: {{titulo, descripcion, categoria, duracion_estimada}}"""
+        prompt = f"""
+            Actúa como experto en neurociencia.
+            Datos: {params.estado_animo}, intereses: {params.intereses}, tiempo: {params.tiempo_disponible}.
+            Responde ÚNICAMENTE en JSON: {{"titulo": "...", "descripcion": "...", "categoria": "...", "duracion_estimada": "..."}}
+        """
         
         response = self.model.generate_content(prompt)
-        # Limpieza simple de la respuesta JSON de Gemini
-        data = json.loads(response.text.replace("```json", "").replace("```", ""))
+        clean_json = response.text.replace("```json", "").replace("```", "").strip()
+        data = json.loads(clean_json)
         return ActividadSugerida(**data)

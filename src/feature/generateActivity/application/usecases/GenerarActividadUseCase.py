@@ -1,5 +1,5 @@
-from core.services.interface import IA_ServiceInterface
-from feature.generateActivity.domain.entity.activity import GeneradorParametros
+from src.core.services.interface import IA_ServiceInterface
+from src.feature.generateActivity.domain.entity.Activity import GeneradorParametros
 
 class GenerarActividadUseCase:
     def __init__(self, ia_service: IA_ServiceInterface):

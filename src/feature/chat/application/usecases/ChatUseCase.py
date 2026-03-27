@@ -1,6 +1,5 @@
-from core.services.interface.IA_ServiceInterface import IA_ServiceInterface
-from feature.chat.domain.entity.message import UsuarioContexto
-
+from src.core.services.interface.IA_ServiceInterface import IA_ServiceInterface
+from src.feature.chat.domain.entity.Message import UsuarioContexto
 
 class ChatUseCase:
     def __init__(self, ia_service: IA_ServiceInterface):
