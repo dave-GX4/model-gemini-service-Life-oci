@@ -6,10 +6,19 @@ class ActividadSugerida:
     descripcion: str
     categoria: str
     duracion_estimada: str
+    socialType: str
 
 @dataclass
 class GeneradorParametros:
-    hora_actual: str
-    estado_animo: str
-    intereses: str
-    tiempo_disponible: str
+    # Datos del Usuario
+    user_name: str
+    user_interests: str
+    user_topic: str
+    user_description: str
+    user_leisure_type: str
+    # Datos de la Plantilla (Bored API)
+    template_activity: str
+    template_type: str
+    template_participants: int
+    template_duration: str
+    template_kid_friendly: bool

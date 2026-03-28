@@ -1,7 +1,15 @@
 from pydantic import BaseModel
 
 class DatosGeneradorDTO(BaseModel):
-    hora_actual: str
-    estado_animo: str
-    intereses: str
-    tiempo_disponible: str
+    # Campos del usuario
+    name: str
+    interests: str
+    topic: str
+    description: str
+    leisureType: str
+    # Campos de la plantilla (Bored API)
+    activity_template: str
+    type_template: str
+    participants_template: int
+    duration_template: str
+    kidFriendly_template: bool
