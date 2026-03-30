@@ -28,4 +28,4 @@ async def generar(datos: DatosGeneradorDTO, use_case: GenerarActividadUseCase = 
     )
     
     actividad = await use_case.execute(params)
-    return {"actividad_sugerida": actividad}
+    return actividad 
