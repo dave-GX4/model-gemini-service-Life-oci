@@ -2,7 +2,6 @@ import json
 from fastapi import params
 import google.generativeai as genai
 from src.core.services.interface.IA_ServiceInterface import IA_ServiceInterface
-from src.feature.chat.domain.entity.Message import UsuarioContexto
 from src.feature.generateActivity.domain.entity.Activity import ActividadSugerida, GeneradorParametros
 
 class GeminiServiceImpl(IA_ServiceInterface):

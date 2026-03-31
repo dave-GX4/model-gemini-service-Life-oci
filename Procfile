@@ -1,1 +1,1 @@
-web: PYTHONPATH=/app uvicorn index:app --host 0.0.0.0 --port ${PORT:-8000}
+web: gunicorn index:app -w 2 -k uvicorn.workers.UvicornWorker --bind 0.0.0.0:$PORT
