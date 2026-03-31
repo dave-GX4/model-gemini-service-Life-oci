@@ -4,7 +4,7 @@ class DatosGeneradorDTO(BaseModel):
     # Campos del usuario
     name: str
     interests: str
-    topic: str
+    topics: str
     description: str
     leisureType: str
     # Campos de la plantilla (Bored API)

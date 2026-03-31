@@ -31,7 +31,7 @@ class GeminiServiceImpl(IA_ServiceInterface):
             PERFIL DEL USUARIO:
             - Nombre: {params.user_name}
             - Intereses: {params.user_interests}
-            - Tema actual: {params.user_topic}
+            - Temas actuales: {params.user_topics}
             - Estilo de ocio preferido: {params.user_leisure_type}
 
             PLANTILLA BASE (Inspiración):
@@ -48,7 +48,7 @@ class GeminiServiceImpl(IA_ServiceInterface):
             RESPONDE ÚNICAMENTE EN JSON CON ESTE FORMATO:
             {{
                 "titulo": "Título creativo",
-                "descripcion": "Máximo 80 caracteres (debe ser breve)",
+                "descripcion": "Máximo 120 caracteres (debe ser breve)",
                 "categoria": "{params.template_type}",
                 "duracion_estimada": "{params.template_duration}",
                 "socialType": "Social o No social"

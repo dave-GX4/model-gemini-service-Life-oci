@@ -13,7 +13,7 @@ class GeneradorParametros:
     # Datos del Usuario
     user_name: str
     user_interests: str
-    user_topic: str
+    user_topics: str
     user_description: str
     user_leisure_type: str
     # Datos de la Plantilla (Bored API)
