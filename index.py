@@ -5,7 +5,6 @@ from dotenv import load_dotenv
 from src.feature.chat.infraestructure.controller.ChatController import router as chat_router
 from src.feature.generateActivity.infraestructure.controller.ActivityController import router as activity_router
 
-# Cargar .env solo en desarrollo local (Railway inyecta las vars automáticamente)
 if os.getenv("RAILWAY_ENVIRONMENT") is None:
     load_dotenv()
 

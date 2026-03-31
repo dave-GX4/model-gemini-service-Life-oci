@@ -1,1 +1,1 @@
-web: uvicorn index:app --host 0.0.0.0 --port ${PORT:-8000}
+web: PYTHONPATH=/app uvicorn index:app --host 0.0.0.0 --port ${PORT:-8000}
