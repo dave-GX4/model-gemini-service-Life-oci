@@ -18,11 +18,6 @@ class GeminiServiceImpl(IA_ServiceInterface):
             )
         )
 
-    async def generar_chat(self, contexto: UsuarioContexto) -> str:
-        prompt = f"Contexto: {contexto.contexto_extra}\nPregunta: {contexto.mensaje}"
-        response = self.model.generate_content(prompt)
-        return response.text
-
     async def generar_actividad_dopamina(self, params: GeneradorParametros) -> ActividadSugerida:
         prompt = f"""
             Actúa como un experto en Psicología del Ocio. 
