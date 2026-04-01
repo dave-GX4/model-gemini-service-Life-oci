@@ -48,7 +48,7 @@ class GeminiServiceImpl(IA_ServiceInterface):
                 "descripcion": "Máximo 120 caracteres (debe ser breve)",
                 "type": "tipo de ocio Pasivo o Activo",
                 "categoria": "{params.templateType}",
-                "duracionEstimada": "Duración en minutos",
+                "duracionEstimada": "Duración en minutos numerico",
                 "socialType": "Social o No social"
             }}
         """
