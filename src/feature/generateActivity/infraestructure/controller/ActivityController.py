@@ -15,16 +15,16 @@ def get_activity_use_case():
 async def generar(datos: DatosGeneradorDTO, use_case: GenerarActividadUseCase = Depends(get_activity_use_case)):
     # Mapeo manual del DTO a la entidad de parámetros de dominio
     params = GeneradorParametros(
-        user_name=datos.name,
-        user_interests=datos.interests,
-        user_topics=datos.topics,
-        user_description=datos.description,
-        user_leisure_type=datos.leisureType,
-        template_activity=datos.activity_template,
-        template_type=datos.type_template,
-        template_participants=datos.participants_template,
-        template_duration=datos.duration_template,
-        template_kid_friendly=datos.kidFriendly_template
+        userName=datos.name,
+        userInterests=datos.interests,
+        userTopics=datos.topics,
+        userDescription=datos.description,
+        userLeisureType=datos.leisureType,
+        templateActivity=datos.activityTemplate,
+        templateType=datos.typeTemplate,
+        templateParticipants=datos.participantsTemplate,
+        templateDuration=datos.durationTemplate,
+        templateKidFriendly=datos.kidFriendlyTemplate
     )
     
     actividad = await use_case.execute(params)

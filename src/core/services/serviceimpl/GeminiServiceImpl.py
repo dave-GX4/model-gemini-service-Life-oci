@@ -18,33 +18,37 @@ class GeminiServiceImpl(IA_ServiceInterface):
         )
 
     async def generar_actividad_dopamina(self, params: GeneradorParametros) -> ActividadSugerida:
+        intereses_texto = ", ".join(params.userInterests)
+        temas_texto = ", ".join(params.userTopics)
+        
         prompt = f"""
             Actúa como un experto en Psicología del Ocio. 
             Tu tarea es crear una actividad personalizada basada en una 'Plantilla' y el 'Perfil del Usuario'.
 
             PERFIL DEL USUARIO:
-            - Nombre: {params.user_name}
-            - Intereses: {params.user_interests}
-            - Temas actuales: {params.user_topics}
-            - Estilo de ocio preferido: {params.user_leisure_type}
+            - Nombre: {params.userName}
+            - Intereses: {intereses_texto}
+            - Temas actuales: {temas_texto}
+            - Estilo de ocio preferido: {params.userLeisureType}
 
             PLANTILLA BASE (Inspiración):
-            - Idea original: {params.template_activity}
-            - Tipo: {params.template_type}
-            - Participantes: {params.template_participants}
-            - Duración sugerida: {params.template_duration}
+            - Idea original: {params.templateActivity}
+            - Tipo: {params.templateType}
+            - Participantes: {params.templateParticipants}
+            - Duración sugerida: {params.templateDuration}
 
             INSTRUCCIONES:
             1. No copies la plantilla, adáptala a los intereses del usuario.
-            2. Si la plantilla es "{params.template_activity}", ¿cómo sería una versión para alguien que le gusta {params.user_interests}?
-            3. Define si es una actividad "Social" o "Individual" basado en los participantes ({params.template_participants}).
+            2. Si la plantilla es "{params.templateActivity}", ¿cómo sería una versión para alguien que le gusta {intereses_texto}?
+            3. Define si es una actividad "Social" o "Individual" basado en los participantes ({params.templateParticipants}).
 
             RESPONDE ÚNICAMENTE EN JSON CON ESTE FORMATO:
             {{
                 "titulo": "Título creativo",
                 "descripcion": "Máximo 120 caracteres (debe ser breve)",
-                "categoria": "{params.template_type}",
-                "duracion_estimada": "{params.template_duration}",
+                "type": "tipo de ocio Pasivo o Activo",
+                "categoria": "{params.templateType}",
+                "duracionEstimada": "Duración en minutos",
                 "socialType": "Social o No social"
             }}
         """
@@ -53,5 +57,4 @@ class GeminiServiceImpl(IA_ServiceInterface):
         clean_json = response.text.replace("```json", "").replace("```", "").strip()
         data = json.loads(clean_json)
         
-        # Retornamos la entidad de dominio
         return ActividadSugerida(**data)

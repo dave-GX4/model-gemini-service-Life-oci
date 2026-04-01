@@ -1,15 +1,21 @@
-from pydantic import BaseModel
+from typing import List, Union
+from pydantic import BaseModel, field_validator
 
 class DatosGeneradorDTO(BaseModel):
-    # Campos del usuario
     name: str
-    interests: str
-    topics: str
+    interests: Union[str, List[str]]
+    topics: Union[str, List[str]]
     description: str
     leisureType: str
-    # Campos de la plantilla (Bored API)
-    activity_template: str
-    type_template: str
-    participants_template: int
-    duration_template: str
-    kidFriendly_template: bool
+    activityTemplate: str
+    typeTemplate: str
+    participantsTemplate: int
+    durationTemplate: str
+    kidFriendlyTemplate: bool
+
+    @field_validator('interests', 'topics', mode='before')
+    @classmethod
+    def split_if_string(cls, v):
+        if isinstance(v, str):
+            return [item.strip() for item in v.split(',') if item.strip()]
+        return v

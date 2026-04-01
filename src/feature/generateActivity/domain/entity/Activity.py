@@ -1,24 +1,24 @@
+from ast import List
 from dataclasses import dataclass
 
 @dataclass
 class ActividadSugerida:
     titulo: str
     descripcion: str
+    type: str
     categoria: str
-    duracion_estimada: str
+    duracionEstimada: str
     socialType: str
 
 @dataclass
 class GeneradorParametros:
-    # Datos del Usuario
-    user_name: str
-    user_interests: str
-    user_topics: str
-    user_description: str
-    user_leisure_type: str
-    # Datos de la Plantilla (Bored API)
-    template_activity: str
-    template_type: str
-    template_participants: int
-    template_duration: str
-    template_kid_friendly: bool
+    userName: str
+    userInterests: List[str]
+    userTopics: List[str]
+    userDescription: str
+    userLeisureType: str
+    templateActivity: str
+    templateType: str
+    templateParticipants: int
+    templateDuration: str
+    templateKidFriendly: bool
